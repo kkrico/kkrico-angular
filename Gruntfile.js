@@ -59,7 +59,7 @@ module.exports = function (grunt) {
                 separator: '\n'
             },
             main: {
-                src: 'scripts/**.js',
+                src: 'scripts/**/*.js',
                 dest: 'dist/js/app.js'
             }
         },

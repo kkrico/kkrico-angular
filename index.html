@@ -10,14 +10,15 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 
-<body>
+<body ng-app="GithubViewer">
     <div class="container">
-        <div class="page-header">
-            <h3>Hello World</h3>
+        <div ng-view>
+
         </div>
     </div>
 
     <script src="http://localhost:35729/livereload.js"></script>
+    <script src="dist/js/angular.min.js"></script>
     <script src="dist/js/app.js"></script>
 </body>
 
