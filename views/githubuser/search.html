@@ -1,0 +1,24 @@
+<div class="page-header">
+    <h3>Github Viewer</h3>
+</div>
+
+<h2>{{ errorMessage }}</h2>
+
+<form name="usersearch" ng-submit="search(username)">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="username" class="control-label">Insert the github username</label>
+                <input type="text" class="form-control" ng-model="username" placeholder="" name="username" required="">
+            </div>
+            <button class="btn btn-default btn-primary" type="submit">Search</button>
+        </div>
+        <div class="col-md-8 user" ng-show="user">
+            <img ng-src="{{user.avatar_url}}" class="userinfo">
+            <div class="form-group"></div>
+        </div>
+    </div>
+</form>
+
+<div class="data" ng-include="'/views/githubuser/userinfo.html'" ng-show="user">
+</div>

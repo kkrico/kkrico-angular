@@ -3,7 +3,7 @@ angular.module('GithubViewer.controllers', []);
 app.config(["$routeProvider", function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: 'views/githubuser/info.html',
+            templateUrl: 'views/githubuser/search.html',
             controller: 'GithubController'
         })
 }]);

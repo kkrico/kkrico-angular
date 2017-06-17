@@ -1,14 +1,15 @@
-input{
-    max-width: 30%;
-}
-
 img[src="_"] {
     display: none !important;
 }
 
 .userinfo {
+    max-height: 150px;
     border-radius: 100%;
     -webkit-box-shadow: 2px 2px 15px 0px rgba(50, 50, 50, 0.75);
 -moz-box-shadow:    2px 2px 15px 0px rgba(50, 50, 50, 0.75);
 box-shadow:         2px 2px 15px 0px rgba(50, 50, 50, 0.75);
+}
+
+.user {
+    text-align: center;
 }

@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="" class="control-label">Filter:</label>
+            <input type="text" class="form-control" ng-model="searchterm" ng-disabled="!user.repos">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="control-label">{{user.name}}</label>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <select ng-model="user.repos.sortOrder" class="form-control">
+            <option value="+name">Name</option>
+            <option value="-stargazers_count">Stars</option>
+            <option value="-language">Language</option>
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12 ">
+        <table class="table">
+            <thead>
+                <tr>
+                    <ths>Name</th>
+                        <th>Stars</th>
+                        <th>Language</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="repo in user.repos | filter:searchterm | orderBy:user.repos.sortOrder">
+                    <td>{{repo.name}}</td>
+                    <td>{{repo.stargazers_count | number}}</td>
+                    <td>{{repo.language}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

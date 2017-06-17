@@ -2,11 +2,20 @@ angular.module('GithubViewer.controllers').controller('GithubController', ["$sco
 
     var onSucess = function (response) {
         $scope.user = response.data;
+
+        $http.get($scope.user.repos_url)
+            .then(onRepos, onFail)
     };
 
-    var onFail = function () {
+    var onRepos = function (response) {
+        $scope.user.repos = response.data;
+        $scope.user.repos.sortOrder = '-stargazers_count';
+        
+    };
+
+    var onFail = function (a) {
         $scope.user = undefined;
-        $scope.errorMessage = "User not found";
+        $scope.errorMessage = "Could not fetch data " + a.toJSON();
     };
 
     $scope.search = function (username) {
