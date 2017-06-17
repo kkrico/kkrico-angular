@@ -3,25 +3,23 @@ module.exports = function (grunt) {
     grunt.initConfig({
 
         watch: {
-            concat: {
-                files: 'scripts/**.js',
-                tasks: ['concat:main']
-            },
-
             cssmin: {
                 files: 'styles/styles.css',
                 options: {
-                    livereload: 8001
+                    livereload: 35729
                 }
             },
-
+            concat: {
+                files: 'scripts/**/*.js',
+                tasks: ['concat']
+            },
             uglify: {
                 files: 'dist/js/app.js',
+                tasks: ['uglify:main'],
                 options: {
                     livereload: true
                 }
             },
-
             all: {
                 files: ['**/*.html'],
                 options: {
