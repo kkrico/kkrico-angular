@@ -2,11 +2,37 @@ module.exports = function (grunt) {
 
     grunt.initConfig({
 
+        watch: {
+            concat: {
+                files: 'scripts/**.js',
+                tasks: ['concat:main']
+            },
+
+            cssmin: {
+                files: 'styles/styles.css',
+                options: {
+                    livereload: 8001
+                }
+            },
+
+            uglify: {
+                files: 'dist/js/app.js',
+                options: {
+                    livereload: true
+                }
+            },
+
+            all: {
+                files: ['**/*.html'],
+                options: {
+                    livereload: true
+                }
+            }
+        },
+
         connect: {
             server: {
-                options: {
-                    keepalive: true
-                }
+
             }
         },
 
@@ -57,7 +83,7 @@ module.exports = function (grunt) {
     grunt.registerTask('css', ['cssmin']);
     grunt.registerTask('font', ['copy:font']);
     grunt.registerTask('js', ['concat', 'uglify']);
-    grunt.registerTask('default', ['css', 'font', 'js', 'connect', 'uglify']);
+    grunt.registerTask('default', ['css', 'font', 'js', 'uglify', 'connect', 'watch']);
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
