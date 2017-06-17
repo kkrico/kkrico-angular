@@ -1,0 +1,25 @@
+<div class="page-header">
+    <h3>Github Viewer</h3>
+</div>
+
+<form action="" name="usersearch">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="username" class="control-label">Insert the github username</label>
+                <input type="text" class="form-control" ng-model="username" placeholder="" name="username">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <button class="btn btn-default btn-primary" type="button" ng-click="search(username)">Search</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<hr>
+
+{{user.login}}

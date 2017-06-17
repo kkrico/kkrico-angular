@@ -28,6 +28,18 @@ module.exports = function (grunt) {
             }
         },
 
+        ngAnnotate: {
+            main: {
+                files: [
+                    {
+                        expand: true, src: ['scripts/**/*.js'], ext: '.js',
+                        extDot: 'last'
+                    }
+                ]
+            },
+        },
+
+
         connect: {
             server: {
 
@@ -61,10 +73,22 @@ module.exports = function (grunt) {
             main: {
                 src: 'scripts/**/*.js',
                 dest: 'dist/js/app.js'
+            },
+
+            angular: {
+                options: {
+                    separator: '\n'
+                },
+                files: {
+                    'dist/js/angular.js': ['node_modules/angular/angular.js', 'node_modules/angular-route/angular-route.js'],
+                }
             }
         },
 
         uglify: {
+            options: {
+                sourceMap: true,
+            },
             main: {
                 files: {
                     'dist/js/app.min.js': ['dist/js/app.js'],
@@ -72,7 +96,7 @@ module.exports = function (grunt) {
             },
             angular: {
                 files: {
-                    'dist/js/angular.min.js': ['node_modules/angular/angular.js', 'node_modules/angular-route/angular-route.js'],
+                    'dist/js/angular.min.js': ['dist/js/angular.js'],
                 }
             }
         }
@@ -81,7 +105,7 @@ module.exports = function (grunt) {
     grunt.registerTask('css', ['cssmin']);
     grunt.registerTask('font', ['copy:font']);
     grunt.registerTask('js', ['concat', 'uglify']);
-    grunt.registerTask('default', ['css', 'font', 'js', 'uglify', 'connect', 'watch']);
+    grunt.registerTask('default', ['css', 'font', 'js', 'uglify', 'ngAnnotate', 'connect', 'watch']);
 
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -89,4 +113,5 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-connect');
+    grunt.loadNpmTasks('grunt-ng-annotate');
 };
