@@ -2,24 +2,33 @@
     <h3>Github Viewer</h3>
 </div>
 
-<form action="" name="usersearch">
+<h2>{{ errorMessage }}</h2>
+
+<form name="usersearch" ng-submit="search(username)">
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
                 <label for="username" class="control-label">Insert the github username</label>
-                <input type="text" class="form-control" ng-model="username" placeholder="" name="username">
+                <input type="text" class="form-control" ng-model="username" placeholder="" name="username" required="">
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                <button class="btn btn-default btn-primary" type="button" ng-click="search(username)">Search</button>
+                <button class="btn btn-default btn-primary" type="submit">Search</button>
             </div>
         </div>
     </div>
 </form>
-
-<hr>
-
-{{user.login}}
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="control-label">{{user.name}}</label>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <img ng-src="{{user.avatar_url ? user.avatar_url : ' '}}" class="userinfo">
+        <div class="form-group"></div>
+    </div>
+</div>

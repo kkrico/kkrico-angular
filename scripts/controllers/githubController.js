@@ -5,11 +5,12 @@ angular.module('GithubViewer.controllers').controller('GithubController', ["$sco
     };
 
     var onFail = function () {
-
+        $scope.user = undefined;
+        $scope.errorMessage = "User not found";
     };
 
-
     $scope.search = function (username) {
+        $scope.errorMessage = undefined;
         $http.get("https://api.github.com/users/" + username).then(onSucess, onFail);
     };
 }]);

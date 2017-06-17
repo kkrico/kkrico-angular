@@ -11,11 +11,10 @@ module.exports = function (grunt) {
             },
             concat: {
                 files: 'scripts/**/*.js',
-                tasks: ['concat']
+                tasks: ['concat:main']
             },
             uglify: {
                 files: 'dist/js/app.js',
-                tasks: ['uglify:main'],
                 options: {
                     livereload: true
                 }
